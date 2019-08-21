@@ -1,0 +1,72 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+typedef struct stack {
+    int *arr;
+    int top;
+    int max_size;
+}Stack;
+Stack s;
+void push(int num)
+{
+    if(s.top==s.max_size-1)
+    {
+        printf("stack is full");
+    }
+    else
+    {
+        s.top++;
+        s.arr[s.top]=num;
+    }
+}
+void pop()
+{
+    if(s.top==-1)
+    {
+        printf("stack is empty");
+    }
+    else
+    {
+        s.top--;
+    }
+}
+int isEmpty()
+{
+    return s.top==-1?1:0;
+}
+int peek()
+{
+    if(isEmpty())
+    {
+       printf("stack is empty");
+       return 0;
+    }
+    else
+    {
+        return s.arr[s.top];
+    }
+}
+int main()
+{
+   int max_size=0;
+   scanf("%d",&max_size);
+   s.arr=(int *)malloc(max_size*sizeof(int));
+   s.top=-1;
+   s.max_size=max_size;
+   int num=0;
+   for(int i=0;i<max_size;i++)
+   {
+       scanf("%d",&num);
+       push(num);
+   }
+   for(int i=0;i<=max_size;i++)
+   {
+       if(!isEmpty())
+       {
+      printf("%d ",peek());
+      pop();
+       }
+   }
+    return 0;
+}
+
