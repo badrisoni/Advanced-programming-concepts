@@ -1,11 +1,3 @@
-/******************************************************************************
-
-Welcome to GDB Online.
-GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
-C#, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
-Code, Compile, Run and Debug online from anywhere in world.
-
-*******************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 struct node
@@ -55,19 +47,19 @@ void reverse_iterative(struct node **h)
      
  struct node * prev=NULL;
  struct node * current=(*h);
- struct node * next=NULL;
+ struct node * Next=NULL;
  if(current!=NULL)
  {
      
-     next=current->next;
+     Next=current->next;
  
      while(current!=NULL)
      {
          current->next=prev;
          prev=current;
-         current=next;
+         current=Next;
          if(current!=NULL)
-         next=next->next;
+         Next=Next->next;
      }
      (*h)=prev;
  }
@@ -82,8 +74,8 @@ struct node* head=NULL;
    scanf("%d",&num);
    append(&head,num);
    }
-  //reverse_iterative(&head);
-  head=reverse_recursive(head);
+  reverse_iterative(&head);
+  //head=reverse_recursive(head);
    if(head==NULL)
    {
        printf("EMPTY");
@@ -98,4 +90,5 @@ struct node* head=NULL;
    }
  return 0;
 }
+
 
