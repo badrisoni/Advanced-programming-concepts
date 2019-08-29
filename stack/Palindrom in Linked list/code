@@ -1,0 +1,102 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+struct ListNode {
+	int val;
+	struct ListNode *next;
+};
+
+typedef struct ListNode listnode;
+
+listnode* listnode_new(int val) {
+	listnode* node = (listnode *) malloc(sizeof(listnode));
+	node->val = val;
+	node->next = NULL;
+	return node;
+}
+
+void addNode(listnode* A, int i){
+	listnode* temp = listnode_new(i);
+	listnode* t = A;
+	while(t->next != NULL){
+		t = t->next;
+	}
+	t->next = temp;
+}
+struct stack 
+{
+    int data;
+    struct stack *next;
+};
+struct stack * st=NULL;
+void push (struct stack ** head,int val)
+{
+    struct stack * ne = (struct stack *)malloc(sizeof(struct stack));
+    ne->data=val;
+    ne->next=(*head);
+    *head=ne;
+}
+void pop(struct stack **head)
+{
+    struct stack * temp;
+    temp = (* head);
+    * head= (*head)->next;
+    free(temp);
+    temp=NULL;
+}
+int peek(struct stack * head)
+{
+    return head->data;
+}
+int isEmpty(struct stack * head)
+{
+   if(head==NULL)
+   {
+       return 1;
+   }
+   else
+   return 0;
+}
+int isPalin(listnode* A){
+int flag=1;
+   listnode * curr=A;
+   while(curr!=NULL)
+   {
+       push(&st,curr->val);
+       curr=curr->next;
+   }
+ curr=A;
+  while(curr)
+  {
+      if(curr->val!=peek(st))
+      {
+          flag=0;
+          break;
+      }
+      curr=curr->next;
+      st=st->next;
+  }
+ //return flag;
+
+
+return flag;
+}
+int main(){
+	int count = 0;
+	int i;
+	int v;
+	scanf("%d",&count);
+	scanf("%d",&v);
+	listnode* A = listnode_new(v);
+	for(i=0;i<count-1;i++){
+		scanf("%d",&v);
+		addNode(A,v);
+	}
+	if(isPalin(A) == 1) printf("true");
+	else printf("false");
+}
