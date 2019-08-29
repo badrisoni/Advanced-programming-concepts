@@ -32,7 +32,7 @@ void append(struct node **h,int n)
 }
 struct node * reverse_recursive(struct node * x)
 {
-    struct node * first = x;
+    struct node * first = x; 
     struct node * second = first->next;
     if(second==NULL)
      return first;
